@@ -135,6 +135,58 @@
       letter-spacing: 2px;
     }
 
+    /* 粒子环绕容器 */
+    .particles {
+      position: absolute;
+      inset: -8px;
+      animation: rotate 8s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* 环绕粒子 */
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #ff69b4;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #ff69b4, 0 0 12px #da70d6;
+    }
+
+    .particle:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
+    .particle:nth-child(2) { top: 20%; right: 5%; }
+    .particle:nth-child(3) { bottom: 20%; right: 5%; }
+    .particle:nth-child(4) { bottom: 0; left: 50%; transform: translateX(-50%); }
+    .particle:nth-child(5) { bottom: 20%; left: 5%; }
+    .particle:nth-child(6) { top: 20%; left: 5%; }
+
+    /* 内圈粒子 */
+    .particles-inner {
+      position: absolute;
+      inset: -4px;
+      animation: rotate 5s linear infinite reverse;
+      pointer-events: none;
+    }
+
+    .particle-inner {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #ffb6c1;
+      border-radius: 50%;
+      box-shadow: 0 0 4px #ffb6c1;
+    }
+
+    .particle-inner:nth-child(1) { top: 10%; left: 30%; }
+    .particle-inner:nth-child(2) { top: 50%; right: 0; }
+    .particle-inner:nth-child(3) { bottom: 10%; left: 30%; }
+    .particle-inner:nth-child(4) { top: 50%; left: 0; }
+
     /* 静态光点 */
     .sparkle {
       position: absolute;
@@ -208,6 +260,20 @@
       <div class="heart-beat">
         <div class="neon-heart">
           <span class="letter">s</span>
+          <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+          </div>
+          <div class="particles-inner">
+            <div class="particle-inner"></div>
+            <div class="particle-inner"></div>
+            <div class="particle-inner"></div>
+            <div class="particle-inner"></div>
+          </div>
           <div class="sparkle"></div>
           <div class="sparkle"></div>
           <div class="sparkle"></div>
@@ -220,6 +286,20 @@
       <div class="heart-beat">
         <div class="neon-heart">
           <span class="letter">h</span>
+          <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+          </div>
+          <div class="particles-inner">
+            <div class="particle-inner"></div>
+            <div class="particle-inner"></div>
+            <div class="particle-inner"></div>
+            <div class="particle-inner"></div>
+          </div>
           <div class="sparkle"></div>
           <div class="sparkle"></div>
           <div class="sparkle"></div>
@@ -232,6 +312,20 @@
       <div class="heart-beat">
         <div class="neon-heart">
           <span class="letter">l</span>
+          <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+          </div>
+          <div class="particles-inner">
+            <div class="particle-inner"></div>
+            <div class="particle-inner"></div>
+            <div class="particle-inner"></div>
+            <div class="particle-inner"></div>
+          </div>
           <div class="sparkle"></div>
           <div class="sparkle"></div>
           <div class="sparkle"></div>
