@@ -59,7 +59,7 @@
 
     .container {
       display: flex;
-      gap: 20px;
+      gap: 18px;
       align-items: center;
       justify-content: center;
       position: relative;
@@ -69,8 +69,8 @@
     /* 爱心外框容器 */
     .cyber-frame {
       position: relative;
-      width: 80px;
-      height: 80px;
+      width: 75px;
+      height: 75px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -79,10 +79,10 @@
     /* 外圈虚线旋转 */
     .dashed-ring {
       position: absolute;
-      inset: -8px;
-      border: 2px dashed rgba(255, 105, 180, 0.4);
+      inset: -10px;
+      border: 2px dashed rgba(255, 105, 180, 0.35);
       border-radius: 50%;
-      animation: dashedRotate 8s linear infinite;
+      animation: dashedRotate 10s linear infinite;
     }
 
     @keyframes dashedRotate {
@@ -93,10 +93,10 @@
     /* 内圈实心旋转 */
     .solid-ring {
       position: absolute;
-      inset: -4px;
-      border: 1px solid rgba(218, 112, 214, 0.6);
+      inset: -5px;
+      border: 1px solid rgba(218, 112, 214, 0.5);
       border-radius: 50%;
-      animation: solidRotate 5s linear infinite reverse;
+      animation: solidRotate 6s linear infinite reverse;
     }
 
     @keyframes solidRotate {
@@ -104,43 +104,57 @@
       100% { transform: rotate(0deg); }
     }
 
-    /* 科技扫描线 */
-    .scan-line {
+    /* 粒子环绕 */
+    .particles {
       position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      overflow: hidden;
+      inset: -12px;
+      animation: rotate 8s linear infinite;
+      pointer-events: none;
     }
 
-    .scan-line::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(from 0deg, transparent 0deg, rgba(255, 105, 180, 0.3) 30deg, transparent 60deg);
-      animation: scanRotate 3s linear infinite;
-    }
-
-    @keyframes scanRotate {
+    @keyframes rotate {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
 
-    /* 呼吸内圈 */
-    .pulse-ring {
+    /* 环绕粒子 */
+    .particle {
       position: absolute;
-      inset: -2px;
-      border: 1px solid rgba(255, 105, 180, 0.8);
+      width: 3px;
+      height: 3px;
+      background: #ff69b4;
       border-radius: 50%;
-      animation: pulseRing 2s ease-in-out infinite;
+      box-shadow: 0 0 6px #ff69b4, 0 0 10px #da70d6;
     }
 
-    @keyframes pulseRing {
-      0%, 100% { opacity: 0.3; transform: scale(0.95); }
-      50% { opacity: 1; transform: scale(1); }
+    .particle:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
+    .particle:nth-child(2) { top: 15%; right: 8%; }
+    .particle:nth-child(3) { bottom: 15%; right: 8%; }
+    .particle:nth-child(4) { bottom: 0; left: 50%; transform: translateX(-50%); }
+    .particle:nth-child(5) { bottom: 15%; left: 8%; }
+    .particle:nth-child(6) { top: 15%; left: 8%; }
+
+    /* 内圈粒子 */
+    .particles-inner {
+      position: absolute;
+      inset: -3px;
+      animation: rotate 4s linear infinite reverse;
+      pointer-events: none;
     }
+
+    .particle-inner {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #ffb6c1;
+      border-radius: 50%;
+      box-shadow: 0 0 4px #ffb6c1;
+    }
+
+    .particle-inner:nth-child(1) { top: 8%; left: 35%; }
+    .particle-inner:nth-child(2) { top: 50%; right: 0; }
+    .particle-inner:nth-child(3) { bottom: 8%; left: 35%; }
+    .particle-inner:nth-child(4) { top: 50%; left: 0; }
 
     /* 爱心跳动 */
     .heart-wrapper {
@@ -148,9 +162,9 @@
       z-index: 5;
     }
 
-    .heart-wrapper:nth-child(4) { animation-delay: 0s; }
-    .heart-wrapper:nth-child(5) { animation-delay: 0.2s; }
-    .heart-wrapper:nth-child(6) { animation-delay: 0.4s; }
+    .heart-wrapper:nth-child(3) { animation-delay: 0s; }
+    .heart-wrapper:nth-child(4) { animation-delay: 0.2s; }
+    .heart-wrapper:nth-child(5) { animation-delay: 0.4s; }
 
     @keyframes heartbeat {
       0%, 100% { transform: scale(1); }
@@ -163,8 +177,8 @@
     /* 霓虹爱心 */
     .neon-heart {
       position: relative;
-      width: 60px;
-      height: 60px;
+      width: 55px;
+      height: 55px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -174,7 +188,7 @@
     .neon-heart::before {
       content: '❤';
       position: absolute;
-      font-size: 56px;
+      font-size: 52px;
       color: transparent;
       -webkit-text-stroke: 1.5px rgba(255, 105, 180, 0.7);
     }
@@ -182,7 +196,7 @@
     .neon-heart::after {
       content: '❤';
       position: absolute;
-      font-size: 48px;
+      font-size: 45px;
       background: linear-gradient(135deg, #ff69b4, #da70d6, #8a2be2);
       -webkit-background-clip: text;
       background-clip: text;
@@ -193,7 +207,7 @@
     .letter {
       position: absolute;
       z-index: 20;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       color: #fff;
       text-shadow: 0 0 10px #ff69b4, 0 0 20px #da70d6;
@@ -231,20 +245,20 @@
     /* 响应式 */
     @media (max-width: 380px) {
       .container {
-        gap: 15px;
+        gap: 12px;
       }
       .cyber-frame {
-        width: 65px;
-        height: 65px;
+        width: 60px;
+        height: 60px;
       }
       .neon-heart::before {
-        font-size: 46px;
+        font-size: 42px;
       }
       .neon-heart::after {
-        font-size: 40px;
+        font-size: 36px;
       }
       .letter {
-        font-size: 16px;
+        font-size: 14px;
       }
     }
   </style>
@@ -258,8 +272,20 @@
     <div class="cyber-frame">
       <div class="dashed-ring"></div>
       <div class="solid-ring"></div>
-      <div class="scan-line"></div>
-      <div class="pulse-ring"></div>
+      <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+      <div class="particles-inner">
+        <div class="particle-inner"></div>
+        <div class="particle-inner"></div>
+        <div class="particle-inner"></div>
+        <div class="particle-inner"></div>
+      </div>
       <div class="heart-wrapper">
         <div class="neon-heart">
           <span class="letter">s</span>
@@ -271,8 +297,20 @@
     <div class="cyber-frame">
       <div class="dashed-ring"></div>
       <div class="solid-ring"></div>
-      <div class="scan-line"></div>
-      <div class="pulse-ring"></div>
+      <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+      <div class="particles-inner">
+        <div class="particle-inner"></div>
+        <div class="particle-inner"></div>
+        <div class="particle-inner"></div>
+        <div class="particle-inner"></div>
+      </div>
       <div class="heart-wrapper">
         <div class="neon-heart">
           <span class="letter">h</span>
@@ -284,8 +322,20 @@
     <div class="cyber-frame">
       <div class="dashed-ring"></div>
       <div class="solid-ring"></div>
-      <div class="scan-line"></div>
-      <div class="pulse-ring"></div>
+      <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+      <div class="particles-inner">
+        <div class="particle-inner"></div>
+        <div class="particle-inner"></div>
+        <div class="particle-inner"></div>
+        <div class="particle-inner"></div>
+      </div>
       <div class="heart-wrapper">
         <div class="neon-heart">
           <span class="letter">l</span>
