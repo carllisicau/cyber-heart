@@ -59,7 +59,7 @@
 
     .container {
       display: flex;
-      gap: 18px;
+      gap: 25px;
       align-items: center;
       justify-content: center;
       position: relative;
@@ -69,45 +69,17 @@
     /* 爱心外框容器 */
     .cyber-frame {
       position: relative;
-      width: 75px;
-      height: 75px;
+      width: 70px;
+      height: 70px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    /* 外圈虚线旋转 */
-    .dashed-ring {
-      position: absolute;
-      inset: -10px;
-      border: 2px dashed rgba(255, 105, 180, 0.35);
-      border-radius: 50%;
-      animation: dashedRotate 10s linear infinite;
-    }
-
-    @keyframes dashedRotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* 内圈实心旋转 */
-    .solid-ring {
-      position: absolute;
-      inset: -5px;
-      border: 1px solid rgba(218, 112, 214, 0.5);
-      border-radius: 50%;
-      animation: solidRotate 6s linear infinite reverse;
-    }
-
-    @keyframes solidRotate {
-      0% { transform: rotate(360deg); }
-      100% { transform: rotate(0deg); }
-    }
-
-    /* 粒子环绕 */
+    /* 外圈粒子环绕 */
     .particles {
       position: absolute;
-      inset: -12px;
+      inset: -15px;
       animation: rotate 8s linear infinite;
       pointer-events: none;
     }
@@ -117,29 +89,34 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* 环绕粒子 */
+    /* 外圈粒子 */
     .particle {
       position: absolute;
-      width: 3px;
-      height: 3px;
+      width: 4px;
+      height: 4px;
       background: #ff69b4;
       border-radius: 50%;
-      box-shadow: 0 0 6px #ff69b4, 0 0 10px #da70d6;
+      box-shadow: 0 0 8px #ff69b4, 0 0 15px #da70d6;
     }
 
     .particle:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
-    .particle:nth-child(2) { top: 15%; right: 8%; }
-    .particle:nth-child(3) { bottom: 15%; right: 8%; }
+    .particle:nth-child(2) { top: 15%; right: 5%; }
+    .particle:nth-child(3) { bottom: 15%; right: 5%; }
     .particle:nth-child(4) { bottom: 0; left: 50%; transform: translateX(-50%); }
-    .particle:nth-child(5) { bottom: 15%; left: 8%; }
-    .particle:nth-child(6) { top: 15%; left: 8%; }
+    .particle:nth-child(5) { bottom: 15%; left: 5%; }
+    .particle:nth-child(6) { top: 15%; left: 5%; }
 
     /* 内圈粒子 */
     .particles-inner {
       position: absolute;
-      inset: -3px;
-      animation: rotate 4s linear infinite reverse;
+      inset: -8px;
+      animation: rotateReverse 5s linear infinite;
       pointer-events: none;
+    }
+
+    @keyframes rotateReverse {
+      0% { transform: rotate(360deg); }
+      100% { transform: rotate(0deg); }
     }
 
     .particle-inner {
@@ -148,12 +125,12 @@
       height: 2px;
       background: #ffb6c1;
       border-radius: 50%;
-      box-shadow: 0 0 4px #ffb6c1;
+      box-shadow: 0 0 5px #ffb6c1;
     }
 
-    .particle-inner:nth-child(1) { top: 8%; left: 35%; }
+    .particle-inner:nth-child(1) { top: 10%; left: 30%; }
     .particle-inner:nth-child(2) { top: 50%; right: 0; }
-    .particle-inner:nth-child(3) { bottom: 8%; left: 35%; }
+    .particle-inner:nth-child(3) { bottom: 10%; left: 30%; }
     .particle-inner:nth-child(4) { top: 50%; left: 0; }
 
     /* 爱心跳动 */
@@ -162,9 +139,9 @@
       z-index: 5;
     }
 
-    .heart-wrapper:nth-child(3) { animation-delay: 0s; }
-    .heart-wrapper:nth-child(4) { animation-delay: 0.2s; }
-    .heart-wrapper:nth-child(5) { animation-delay: 0.4s; }
+    .heart-wrapper:nth-child(2) { animation-delay: 0s; }
+    .heart-wrapper:nth-child(3) { animation-delay: 0.2s; }
+    .heart-wrapper:nth-child(4) { animation-delay: 0.4s; }
 
     @keyframes heartbeat {
       0%, 100% { transform: scale(1); }
@@ -245,11 +222,11 @@
     /* 响应式 */
     @media (max-width: 380px) {
       .container {
-        gap: 12px;
+        gap: 18px;
       }
       .cyber-frame {
-        width: 60px;
-        height: 60px;
+        width: 55px;
+        height: 55px;
       }
       .neon-heart::before {
         font-size: 42px;
@@ -270,8 +247,6 @@
   <div class="container">
     <!-- 爱心 1: s -->
     <div class="cyber-frame">
-      <div class="dashed-ring"></div>
-      <div class="solid-ring"></div>
       <div class="particles">
         <div class="particle"></div>
         <div class="particle"></div>
@@ -295,8 +270,6 @@
 
     <!-- 爱心 2: h -->
     <div class="cyber-frame">
-      <div class="dashed-ring"></div>
-      <div class="solid-ring"></div>
       <div class="particles">
         <div class="particle"></div>
         <div class="particle"></div>
@@ -320,8 +293,6 @@
 
     <!-- 爱心 3: l -->
     <div class="cyber-frame">
-      <div class="dashed-ring"></div>
-      <div class="solid-ring"></div>
       <div class="particles">
         <div class="particle"></div>
         <div class="particle"></div>
