@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Cyber Love - 科技感爱心</title>
+  <title>Cyber Love</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
@@ -59,31 +59,103 @@
 
     .container {
       display: flex;
-      gap: 12px;
+      gap: 20px;
       align-items: center;
       justify-content: center;
       position: relative;
       z-index: 10;
     }
 
-    /* 爱心容器 */
-    .cyber-heart {
+    /* 爱心外框容器 */
+    .cyber-frame {
       position: relative;
-      width: 65px;
-      height: 65px;
-      flex-shrink: 0;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* 跳动动画 */
-    .heart-beat {
-      width: 100%;
-      height: 100%;
+    /* 科技感外环 */
+    .frame-ring {
+      position: absolute;
+      inset: -6px;
+      border: 1px solid transparent;
+      border-radius: 50%;
+      background:
+        linear-gradient(90deg, transparent 0%, rgba(255, 105, 180, 0.8) 20%, rgba(255, 105, 180, 0.8) 80%, transparent 100%) border-box,
+        linear-gradient(0deg, transparent 0%, rgba(138, 43, 226, 0.6) 50%, transparent 100%) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: ringPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes ringPulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    /* 旋转科技环 */
+    .tech-ring {
+      position: absolute;
+      inset: -12px;
+      border: 1px solid rgba(255, 105, 180, 0.3);
+      border-radius: 50%;
+      border-top-color: rgba(255, 105, 180, 0.8);
+      border-right-color: rgba(218, 112, 214, 0.6);
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      animation: techRotate 3s linear infinite;
+    }
+
+    @keyframes techRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* 第二层反向旋转 */
+    .tech-ring-2 {
+      position: absolute;
+      inset: -18px;
+      border: 1px solid rgba(138, 43, 226, 0.3);
+      border-radius: 50%;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: rgba(138, 43, 226, 0.7);
+      border-left-color: rgba(255, 105, 180, 0.5);
+      animation: techRotateReverse 4s linear infinite;
+    }
+
+    @keyframes techRotateReverse {
+      0% { transform: rotate(360deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    /* 角落装饰点 */
+    .corner-dot {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #ff69b4;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #ff69b4;
+    }
+
+    .corner-dot:nth-child(1) { top: -2px; left: 50%; transform: translateX(-50%); }
+    .corner-dot:nth-child(2) { top: 50%; right: -2px; transform: translateY(-50%); }
+    .corner-dot:nth-child(3) { bottom: -2px; left: 50%; transform: translateX(-50%); }
+    .corner-dot:nth-child(4) { top: 50%; left: -2px; transform: translateY(-50%); }
+
+    /* 爱心跳动 */
+    .heart-wrapper {
       animation: heartbeat 1.5s ease-in-out infinite;
+      z-index: 5;
     }
 
-    .heart-beat:nth-child(1) { animation-delay: 0s; }
-    .heart-beat:nth-child(2) { animation-delay: 0.2s; }
-    .heart-beat:nth-child(3) { animation-delay: 0.4s; }
+    .heart-wrapper:nth-child(5) { animation-delay: 0s; }
+    .heart-wrapper:nth-child(6) { animation-delay: 0.2s; }
+    .heart-wrapper:nth-child(7) { animation-delay: 0.4s; }
 
     @keyframes heartbeat {
       0%, 100% { transform: scale(1); }
@@ -96,28 +168,26 @@
     /* 霓虹爱心 */
     .neon-heart {
       position: relative;
-      width: 100%;
-      height: 100%;
+      width: 60px;
+      height: 60px;
       display: flex;
       justify-content: center;
       align-items: center;
       filter: drop-shadow(0 0 12px rgba(255, 105, 180, 0.8));
     }
 
-    /* 外层霓虹轮廓 */
     .neon-heart::before {
       content: '❤';
       position: absolute;
-      font-size: 60px;
+      font-size: 56px;
       color: transparent;
       -webkit-text-stroke: 1.5px rgba(255, 105, 180, 0.7);
     }
 
-    /* 内层渐变填充 */
     .neon-heart::after {
       content: '❤';
       position: absolute;
-      font-size: 52px;
+      font-size: 48px;
       background: linear-gradient(135deg, #ff69b4, #da70d6, #8a2be2);
       -webkit-background-clip: text;
       background-clip: text;
@@ -128,78 +198,12 @@
     .letter {
       position: absolute;
       z-index: 20;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
       color: #fff;
       text-shadow: 0 0 10px #ff69b4, 0 0 20px #da70d6;
       letter-spacing: 2px;
     }
-
-    /* 粒子环绕容器 */
-    .particles {
-      position: absolute;
-      inset: -8px;
-      animation: rotate 8s linear infinite;
-      pointer-events: none;
-    }
-
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* 环绕粒子 */
-    .particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: #ff69b4;
-      border-radius: 50%;
-      box-shadow: 0 0 6px #ff69b4, 0 0 12px #da70d6;
-    }
-
-    .particle:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
-    .particle:nth-child(2) { top: 20%; right: 5%; }
-    .particle:nth-child(3) { bottom: 20%; right: 5%; }
-    .particle:nth-child(4) { bottom: 0; left: 50%; transform: translateX(-50%); }
-    .particle:nth-child(5) { bottom: 20%; left: 5%; }
-    .particle:nth-child(6) { top: 20%; left: 5%; }
-
-    /* 内圈粒子 */
-    .particles-inner {
-      position: absolute;
-      inset: -4px;
-      animation: rotate 5s linear infinite reverse;
-      pointer-events: none;
-    }
-
-    .particle-inner {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: #ffb6c1;
-      border-radius: 50%;
-      box-shadow: 0 0 4px #ffb6c1;
-    }
-
-    .particle-inner:nth-child(1) { top: 10%; left: 30%; }
-    .particle-inner:nth-child(2) { top: 50%; right: 0; }
-    .particle-inner:nth-child(3) { bottom: 10%; left: 30%; }
-    .particle-inner:nth-child(4) { top: 50%; left: 0; }
-
-    /* 静态光点 */
-    .sparkle {
-      position: absolute;
-      width: 3px;
-      height: 3px;
-      background: #ffb6c1;
-      border-radius: 50%;
-      box-shadow: 0 0 6px #ff69b4;
-    }
-
-    .sparkle:nth-of-type(1) { top: 8px; left: 15%; }
-    .sparkle:nth-of-type(2) { top: 12px; right: 18%; }
-    .sparkle:nth-of-type(3) { bottom: 18px; left: 25%; }
 
     /* 点击波纹效果 */
     .click-ripple {
@@ -232,20 +236,20 @@
     /* 响应式 */
     @media (max-width: 380px) {
       .container {
-        gap: 8px;
+        gap: 15px;
       }
-      .cyber-heart {
-        width: 55px;
-        height: 55px;
+      .cyber-frame {
+        width: 65px;
+        height: 65px;
       }
       .neon-heart::before {
-        font-size: 50px;
+        font-size: 46px;
       }
       .neon-heart::after {
-        font-size: 44px;
+        font-size: 40px;
       }
       .letter {
-        font-size: 18px;
+        font-size: 16px;
       }
     }
   </style>
@@ -256,86 +260,55 @@
 
   <div class="container">
     <!-- 爱心 1: s -->
-    <div class="cyber-heart">
-      <div class="heart-beat">
+    <div class="cyber-frame">
+      <div class="corner-dot"></div>
+      <div class="corner-dot"></div>
+      <div class="corner-dot"></div>
+      <div class="corner-dot"></div>
+      <div class="frame-ring"></div>
+      <div class="tech-ring"></div>
+      <div class="tech-ring-2"></div>
+      <div class="heart-wrapper">
         <div class="neon-heart">
           <span class="letter">s</span>
-          <div class="particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-          </div>
-          <div class="particles-inner">
-            <div class="particle-inner"></div>
-            <div class="particle-inner"></div>
-            <div class="particle-inner"></div>
-            <div class="particle-inner"></div>
-          </div>
-          <div class="sparkle"></div>
-          <div class="sparkle"></div>
-          <div class="sparkle"></div>
         </div>
       </div>
     </div>
 
     <!-- 爱心 2: h -->
-    <div class="cyber-heart">
-      <div class="heart-beat">
+    <div class="cyber-frame">
+      <div class="corner-dot"></div>
+      <div class="corner-dot"></div>
+      <div class="corner-dot"></div>
+      <div class="corner-dot"></div>
+      <div class="frame-ring"></div>
+      <div class="tech-ring"></div>
+      <div class="tech-ring-2"></div>
+      <div class="heart-wrapper">
         <div class="neon-heart">
           <span class="letter">h</span>
-          <div class="particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-          </div>
-          <div class="particles-inner">
-            <div class="particle-inner"></div>
-            <div class="particle-inner"></div>
-            <div class="particle-inner"></div>
-            <div class="particle-inner"></div>
-          </div>
-          <div class="sparkle"></div>
-          <div class="sparkle"></div>
-          <div class="sparkle"></div>
         </div>
       </div>
     </div>
 
     <!-- 爱心 3: l -->
-    <div class="cyber-heart">
-      <div class="heart-beat">
+    <div class="cyber-frame">
+      <div class="corner-dot"></div>
+      <div class="corner-dot"></div>
+      <div class="corner-dot"></div>
+      <div class="corner-dot"></div>
+      <div class="frame-ring"></div>
+      <div class="tech-ring"></div>
+      <div class="tech-ring-2"></div>
+      <div class="heart-wrapper">
         <div class="neon-heart">
           <span class="letter">l</span>
-          <div class="particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-          </div>
-          <div class="particles-inner">
-            <div class="particle-inner"></div>
-            <div class="particle-inner"></div>
-            <div class="particle-inner"></div>
-            <div class="particle-inner"></div>
-          </div>
-          <div class="sparkle"></div>
-          <div class="sparkle"></div>
-          <div class="sparkle"></div>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    // 点击/触摸波纹效果
     function createRipple(x, y) {
       const ripple = document.createElement('div');
       ripple.className = 'click-ripple';
