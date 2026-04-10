@@ -34,8 +34,8 @@
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(138, 43, 226, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(138, 43, 226, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(255, 105, 180, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 105, 180, 0.03) 1px, transparent 1px);
       background-size: 50px 50px;
       animation: gridMove 20s linear infinite;
     }
@@ -50,7 +50,7 @@
       position: fixed;
       width: 800px;
       height: 800px;
-      background: radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(255, 105, 180, 0.15) 0%, rgba(138, 43, 226, 0.1) 50%, transparent 60%);
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -90,15 +90,15 @@
     @keyframes heartbeat {
       0%, 100% {
         transform: scale(1);
-        filter: drop-shadow(0 0 15px rgba(138, 43, 226, 0.8));
+        filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.8));
       }
       15% {
         transform: scale(1.12);
-        filter: drop-shadow(0 0 30px rgba(138, 43, 226, 1));
+        filter: drop-shadow(0 0 30px rgba(255, 105, 180, 1));
       }
       30% {
         transform: scale(1);
-        filter: drop-shadow(0 0 15px rgba(138, 43, 226, 0.8));
+        filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.8));
       }
       45% {
         transform: scale(1.08);
@@ -124,8 +124,8 @@
       position: absolute;
       font-size: 65px;
       color: transparent;
-      -webkit-text-stroke: 2px rgba(138, 43, 226, 0.6);
-      text-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+      -webkit-text-stroke: 2px rgba(255, 105, 180, 0.6);
+      text-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
       animation: neonFlicker 2s ease-in-out infinite;
     }
 
@@ -134,16 +134,16 @@
       50% { opacity: 1; }
     }
 
-    /* 内层填充 */
+    /* 内层填充 - 紫色到粉色渐变 */
     .neon-heart::after {
       content: '❤';
       position: absolute;
       font-size: 58px;
-      background: linear-gradient(135deg, #8a2be2, #9400d3, #4b0082);
+      background: linear-gradient(135deg, #ff69b4, #da70d6, #8a2be2);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.9));
+      filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.9));
     }
 
     /* 字母 */
@@ -154,9 +154,9 @@
       font-weight: 700;
       color: #fff;
       text-shadow:
-        0 0 10px #8a2be2,
-        0 0 20px #8a2be2,
-        0 0 40px #9400d3;
+        0 0 10px #ff69b4,
+        0 0 20px #da70d6,
+        0 0 40px #8a2be2;
       letter-spacing: 3px;
       animation: letterGlow 1.5s ease-in-out infinite;
     }
@@ -167,10 +167,10 @@
 
     @keyframes letterGlow {
       0%, 100% {
-        text-shadow: 0 0 10px #8a2be2, 0 0 20px #8a2be2, 0 0 40px #9400d3;
+        text-shadow: 0 0 10px #ff69b4, 0 0 20px #da70d6, 0 0 40px #8a2be2;
       }
       50% {
-        text-shadow: 0 0 20px #ba55d3, 0 0 40px #ba55d3, 0 0 60px #da70d6;
+        text-shadow: 0 0 20px #ffb6c1, 0 0 40px #ff69b4, 0 0 60px #da70d6;
       }
     }
 
@@ -179,9 +179,9 @@
       position: absolute;
       width: 3px;
       height: 3px;
-      background: #da70d6;
+      background: #ff69b4;
       border-radius: 50%;
-      box-shadow: 0 0 8px #da70d6, 0 0 15px #8a2be2;
+      box-shadow: 0 0 8px #ff69b4, 0 0 15px #da70d6;
       animation: particleFly 2s ease-out infinite;
     }
 
@@ -205,7 +205,7 @@
     .ring {
       position: absolute;
       inset: -12px;
-      border: 1px solid rgba(138, 43, 226, 0.3);
+      border: 1px solid rgba(255, 105, 180, 0.3);
       border-radius: 50%;
       animation: ringRotate 4s linear infinite;
     }
@@ -217,9 +217,9 @@
       left: 50%;
       width: 3px;
       height: 3px;
-      background: #da70d6;
+      background: #ff69b4;
       border-radius: 50%;
-      box-shadow: 0 0 8px #da70d6;
+      box-shadow: 0 0 8px #ff69b4;
     }
 
     @keyframes ringRotate {
@@ -231,6 +231,34 @@
       inset: -20px;
       animation-duration: 6s;
       animation-direction: reverse;
+    }
+
+    /* 点击波纹效果 */
+    .click-ripple {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255, 105, 180, 0.8);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1000;
+      transform: translate(-50%, -50%);
+      animation: ripple 1s ease-out forwards;
+    }
+
+    @keyframes ripple {
+      0% {
+        width: 20px;
+        height: 20px;
+        opacity: 1;
+        border-width: 2px;
+      }
+      100% {
+        width: 250px;
+        height: 250px;
+        opacity: 0;
+        border-width: 0px;
+      }
     }
 
     /* 响应式调整 */
@@ -295,5 +323,31 @@
       <div class="particle"></div>
     </div>
   </div>
+
+  <script>
+    // 点击/触摸产生波纹效果 - 适配移动端
+    function createRipple(x, y) {
+      const ripple = document.createElement('div');
+      ripple.className = 'click-ripple';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      document.body.appendChild(ripple);
+
+      setTimeout(() => ripple.remove(), 1000);
+    }
+
+    // 兼容 click、touchend 事件
+    document.addEventListener('click', (e) => {
+      createRipple(e.clientX, e.clientY);
+    });
+
+    // 防止触摸时触发两次
+    document.addEventListener('touchend', (e) => {
+      if (e.target === document.body || e.target.classList.contains('container')) {
+        const touch = e.changedTouches[0];
+        createRipple(touch.clientX, touch.clientY);
+      }
+    }, { passive: true });
+  </script>
 </body>
 </html>
