@@ -29,28 +29,67 @@
       touch-action: manipulation;
     }
 
-    /* 动态背景网格 */
-    .grid-bg {
+    /* 流星容器 */
+    .meteors {
       position: fixed;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(255, 105, 180, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 105, 180, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-      animation: gridMove 20s linear infinite;
+      pointer-events: none;
+      overflow: hidden;
     }
 
-    @keyframes gridMove {
-      0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
-      100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+    .meteor {
+      position: absolute;
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255, 105, 180, 0.8), transparent);
+      top: 0;
+      left: 0;
+      opacity: 0;
+      animation: meteorFall 3s linear infinite;
     }
+
+    .meteor::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -2px;
+      width: 6px;
+      height: 6px;
+      background: #ff69b4;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ff69b4, 0 0 20px #da70d6;
+    }
+
+    @keyframes meteorFall {
+      0% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+      }
+      70% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(300px) translateY(300px);
+        opacity: 0;
+      }
+    }
+
+    /* 随机延迟和位置 */
+    .meteor:nth-child(1) { top: 10%; left: -100px; animation-delay: 0s; animation-duration: 2.5s; }
+    .meteor:nth-child(2) { top: 20%; left: -100px; animation-delay: 1s; animation-duration: 3s; }
+    .meteor:nth-child(3) { top: 30%; left: -100px; animation-delay: 2s; animation-duration: 2.8s; }
+    .meteor:nth-child(4) { top: 5%; left: -100px; animation-delay: 0.5s; animation-duration: 3.2s; }
+    .meteor:nth-child(5) { top: 40%; left: -100px; animation-delay: 1.5s; animation-duration: 2.6s; }
+    .meteor:nth-child(6) { top: 15%; left: -100px; animation-delay: 2.5s; animation-duration: 2.9s; }
+    .meteor:nth-child(7) { top: 35%; left: -100px; animation-delay: 0.8s; animation-duration: 3.1s; }
+    .meteor:nth-child(8) { top: 25%; left: -100px; animation-delay: 1.8s; animation-duration: 2.7s; }
 
     /* 背景光晕 */
     .glow-bg {
       position: fixed;
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle, rgba(255, 105, 180, 0.2) 0%, rgba(138, 43, 226, 0.1) 50%, transparent 70%);
+      background: radial-gradient(circle, rgba(255, 105, 180, 0.15) 0%, rgba(138, 43, 226, 0.08) 50%, transparent 70%);
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -241,7 +280,17 @@
   </style>
 </head>
 <body>
-  <div class="grid-bg"></div>
+  <!-- 流星背景 -->
+  <div class="meteors">
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+  </div>
   <div class="glow-bg"></div>
 
   <div class="container">
